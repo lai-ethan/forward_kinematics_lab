@@ -103,7 +103,7 @@ class ForwardKinematics(Node):
                 [np.cos(angle), 0, np.sin(angle), 0],
                 [0, 1, 0, 0],
                 [-np.sin(angle), 0, np.cos(angle), 0],
-                [0, 0, 0, 1]
+                [0, 0, 0, 1],
         ])
 
     def rotation_z(self, angle):
@@ -113,15 +113,19 @@ class ForwardKinematics(Node):
                 [np.cos(angle), -np.sin(angle), 0, 0],
                 [np.sin(angle), np.cos(angle), 0, 0],
                 [0, 0, 1, 0],
-                [0, 0, 0, 1]
+                [0, 0, 0, 1],
             ]
         )
 
     def translation(self, x, y, z):
-        ## TODO: Implement the translation matrix
-        # return np.array([
-        # ])
-        raise NotImplementedError()
+        # translation matrix
+        return np.array(
+            [
+                [1, 0, 0, x],
+                [0, 1, 0, y],
+                [0, 0, 1, z],
+                [0, 0, 0, 1],
+        ])
 
     ######################## Per-leg forward kinematics ########################
     #
