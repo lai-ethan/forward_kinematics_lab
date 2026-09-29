@@ -107,7 +107,7 @@ class ForwardKinematics(Node):
         ])
 
     def rotation_z(self, angle):
-        rotation about the z-axis
+        #rotation about the z-axis
         return np.array(
             [
                 [np.cos(angle), -np.sin(angle), 0, 0],
@@ -174,8 +174,7 @@ class ForwardKinematics(Node):
         T_0_ee = T_0_1 @ T_1_2 @ T_2_3 @ T_3_ee
 
         # very last column (first three digits: x, y, z)
-        end_effector_position = T_0_ee[:3][3] # slice first three rows and get last column
-
+        end_effector_position = T_0_ee[:3, -1] # slice first three rows and get last column
         return end_effector_position
 
     def fk_front_right(self, theta1, theta2, theta3):
