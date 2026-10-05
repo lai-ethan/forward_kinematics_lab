@@ -220,22 +220,22 @@ class ForwardKinematics(Node):
         ## structure as fk_front_left (T_0_1, T_1_2, T_2_3, T_3_ee, T_0_ee). See the hip origin table above.
 
         # T_0_1 (base_link to leg_back_l_1)
-        T_0_1 = None
+        T_0_1 = translation(-0.07500, 0.03350, 0) @ rotation_x(1.57080) @ rotation_z(-theta1)
 
         # T_1_2 (leg_back_l_1 to leg_back_l_2)
-        T_1_2 = None
+        T_1_2 = translation(0, 0, -0.039) @ rotation_y(-1.57080) @ rotation_z(theta2)
 
         # T_2_3 (leg_back_l_2 to leg_back_l_3)
-        T_2_3 = None
+        T_2_3 = translation(0, -0.0494, 0.0685) @ rotation_y(1.57080) @ rotation_z(-theta3)
 
         # T_3_ee (leg_back_l_3 to end-effector)
-        T_3_ee = None
+        T_3_ee = translation(0.06231, -0.06216, -0.018)
 
         # Compute the final transformation
-        T_0_ee = None
+        T_0_ee = T_0_1 @ T_1_2 @ T_2_3 @ T_3_ee
 
         # Extract the end-effector position
-        end_effector_position = None
+        end_effector_position = T_0_ee[:3, -1]
 
         return end_effector_position
 
@@ -251,22 +251,22 @@ class ForwardKinematics(Node):
         ## structure as fk_front_left (T_0_1, T_1_2, T_2_3, T_3_ee, T_0_ee). See the hip origin table above.
 
         # T_0_1 (base_link to leg_back_r_1)
-        T_0_1 = None
+        T_0_1 = translation(-0.07500, -0.03350, 0) @ rotation_x(1.57080) @ rotation_z(theta1)
 
         # T_1_2 (leg_back_r_1 to leg_back_r_2)
-        T_1_2 = None
+        T_1_2 = translation(0, 0, 0.039) @ rotation_y(-1.57080) @ rotation_z(theta2)
 
         # T_2_3 (leg_back_r_2 to leg_back_r_3)
-        T_2_3 = None
+        T_2_3 = translation(0, -0.0494, 0.0685) @ rotation_y(1.57080) @ rotation_z(theta3)
 
         # T_3_ee (leg_back_r_3 to end-effector)
-        T_3_ee = None
+        T_3_ee = translation(0.06231, -0.06216, 0.018)
 
         # Compute the final transformation
-        T_0_ee = None
+        T_0_ee = T_0_1 @ T_1_2 @ T_2_3 @ T_3_ee
 
         # Extract the end-effector position
-        end_effector_position = None
+        end_effector_position = T_0_ee[:3, -1]
 
         return end_effector_position
 
